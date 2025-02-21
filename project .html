@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Chemistry Quiz</title>
+    <style>
+        body {
+            background-color: green;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+        .quiz-container {
+            background: white;
+            color: black;
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .option {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2 id="question">Question will appear here</h2>
+        <button class="option" onclick="checkAnswer(0)">Option A</button>
+        <button class="option" onclick="checkAnswer(1)">Option B</button>
+        <button class="option" onclick="checkAnswer(2)">Option C</button>
+        <button class="option" onclick="checkAnswer(3)">Option D</button>
+        <p id="score">Score: 0</p>
+        <p id="timer">Time Left: 60s</p>
+    </div>
+    <p>Made By B.Neeraj Murali</p>
+    <script>
+        const questions = [
+            { question: "What is the main goal of green chemistry?", options: ["Reduce pollution", "Increase waste", "Use more chemicals", "Ignore sustainability"], answer: 0 },
+            { question: "Which of these is a principle of green chemistry?", options: ["Use more toxic chemicals", "Prevent waste", "Increase energy consumption", "Use non-renewable resources"], answer: 1 },
+            { question: "What does green chemistry promote?", options: ["Safer products", "More hazardous waste", "Higher emissions", "More fossil fuel usage"], answer: 0 },
+            { question: "Which process aligns with green chemistry?", options: ["Using renewable materials", "Burning plastic", "Dumping waste", "Ignoring safety"], answer: 0 },
+            { question: "Why is green chemistry important?", options: ["To protect the environment", "To increase pollution", "To waste resources", "To make chemicals toxic"], answer: 0 }
+        ];
+        let currentQuestion = 0;
+        let score = 0;
+        let timeLeft = 60;function loadQuestion() {
+        if (currentQuestion < questions.length) {
+            document.getElementById("question").innerText = questions[currentQuestion].question;
+            const options = document.querySelectorAll(".option");
+            options.forEach((button, index) => {
+                button.innerText = questions[currentQuestion].options[index];
+            });
+        } else {
+            document.querySelector(".quiz-container").innerHTML = `<h2>Quiz Over!</h2><p>Your Score: ${score}</p>`;
+        }
+    }
+
+    function checkAnswer(selected) {
+        if (selected === questions[currentQuestion].answer) {
+            score++;
+            document.getElementById("score").innerText = "Score: " + score;
+        }
+        currentQuestion++;
+        loadQuestion();
+    }
+
+    function startTimer() {
+        const timerInterval = setInterval(() => {
+            if (timeLeft > 0) {
+                timeLeft--;
+                document.getElementById("timer").innerText = "Time Left: " + timeLeft + "s";
+            } else {
+                clearInterval(timerInterval);
+                document.querySelector(".quiz-container").innerHTML = `<h2>Time's Up!</h2><p>Your Score: ${score}</p>`;
+            }
+        }, 1000);
+    }
+
+    loadQuestion();
+    startTimer();
+</script>
+
+</body>
+</html>
