@@ -1,98 +1,164 @@
-<!DOCTYPE html><html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Chemistry Quiz</title>
+    <title>Optical Fiber Basics</title>
     <style>
         body {
-            background-color: green;
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px 40px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
             text-align: center;
-            color: white;
         }
-        .quiz-container {
-            background: white;
-            color: black;
-            width: 50%;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        h1 {
+            margin-top: 0;
+            font-size: 2em;
         }
-        .option {
-            display: block;
-            width: 100%;
+        h2 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-size: 1.5em;
+        }
+        p {
+            margin-bottom: 1em;
+            line-height: 1.5;
+        }
+        ul {
+            margin-bottom: 1em;
+            margin-left: 1.5em;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        #timer {
+            font-weight: bold;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        #scoreBox {
+            margin-top: 20px;
             padding: 10px;
-            margin: 5px 0;
-            background: blue;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .hidden {
+            border: 2px solid #4CAF50;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-weight: bold;
             display: none;
+            text-align: center;
+        }
+        .credits {
+            margin-top: 30px;
+            font-size: 0.9em;
+            text-align: center;
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <div class="quiz-container">
-        <h2 id="question">Question will appear here</h2>
-        <button class="option" onclick="checkAnswer(0)">Option A</button>
-        <button class="option" onclick="checkAnswer(1)">Option B</button>
-        <button class="option" onclick="checkAnswer(2)">Option C</button>
-        <button class="option" onclick="checkAnswer(3)">Option D</button>
-        <p id="score">Score: 0</p>
-        <p id="timer">Time Left: 60s</p>
+    <div class="container">
+        <h1>Optical Fiber Basics</h1>
+        <h2>Principle of Total Internal Reflection</h2>
+        <p>
+            Optical fibers work by trapping light inside a thin glass core. This happens because of <strong>total internal reflection</strong>. When light travels through the core and strikes the core-cladding boundary at a steep angle (greater than the critical angle), it reflects completely back into the core instead of passing out. The core has a higher refractive index than the cladding, which causes this reflection. This way, the light continually bounces down the length of the fiber, allowing data signals to be transmitted over long distances quickly.
+        </p>
+        <h2>Composition of Fiber Optic Cables</h2>
+        <p>A fiber optic cable is made of several layers, each with a specific function:</p>
+        <ul>
+            <li><strong>Core</strong>: A thin glass (or plastic) filament at the center that carries the light signals. The core has the highest refractive index.</li>
+            <li><strong>Cladding</strong>: A glass layer surrounding the core with a slightly lower refractive index. This layer causes the light to reflect back into the core (total internal reflection).</li>
+            <li><strong>Coating (Buffer)</strong>: A protective plastic coating around the cladding that cushions the fiber and protects it from moisture and damage.</li>
+            <li><strong>Strength Members</strong>: Fibers (such as Kevlar strands) that give the cable tensile strength and prevent the glass fiber from stretching or breaking.</li>
+            <li><strong>Outer Jacket</strong>: The outer protective sheath made of plastic that shields the entire cable from the environment, abrasion, and crushing.</li>
+        </ul>
+        <h2>Fun Facts</h2>
+        <ul>
+            <li>Fiber optic cables transmit data as pulses of light, allowing extremely fast internet speeds (often in the gigabits per second).</li>
+            <li>They are incredibly thin (about the diameter of a human hair) and flexible, and can even be coiled tightly.</li>
+            <li>Fibers are non-conductive and immune to electromagnetic interference, so signals are clearer and more reliable.</li>
+            <li>The total length of all fiber optic cables around the world stretches for millions of kilometers, connecting continents for global communication.</li>
+            <li>Besides telecommunications, fiber optics are used in medicine (like endoscopes for internal imaging) and in various sensors (e.g., temperature, pressure).</li>
+        </ul>
+        <h2>Optical Fibers Quiz</h2>
+        <div id="timer">Time: 0:00</div>
+        <form id="quizForm">
+            <p><strong>1. What phenomenon keeps light confined in the core of an optical fiber?</strong></p>
+            <input type="radio" name="q1" value="wrong" id="q1a">
+            <label for="q1a">Diffraction</label><br>
+            <input type="radio" name="q1" value="correct" id="q1b">
+            <label for="q1b">Total Internal Reflection</label><br>
+            <input type="radio" name="q1" value="wrong" id="q1c">
+            <label for="q1c">Refraction</label><br>
+            <input type="radio" name="q1" value="wrong" id="q1d">
+            <label for="q1d">Dispersion</label><br>
+            <p><strong>2. What material is typically used for the core of a fiber optic cable?</strong></p>
+            <input type="radio" name="q2" value="wrong" id="q2a">
+            <label for="q2a">Copper</label><br>
+            <input type="radio" name="q2" value="correct" id="q2b">
+            <label for="q2b">Glass</label><br>
+            <input type="radio" name="q2" value="wrong" id="q2c">
+            <label for="q2c">Aluminum</label><br>
+            <input type="radio" name="q2" value="wrong" id="q2d">
+            <label for="q2d">Rubber</label><br>
+            <p><strong>3. Which of the following is an advantage of fiber optic cables over copper cables?</strong></p>
+            <input type="radio" name="q3" value="wrong" id="q3a">
+            <label for="q3a">They are heavier.</label><br>
+            <input type="radio" name="q3" value="wrong" id="q3b">
+            <label for="q3b">They conduct electricity.</label><br>
+            <input type="radio" name="q3" value="correct" id="q3c">
+            <label for="q3c">They provide much higher data bandwidth.</label><br>
+            <input type="radio" name="q3" value="wrong" id="q3d">
+            <label for="q3d">They only work over very short distances.</label><br>
+            <button type="button" onclick="submitQuiz()">Submit</button>
+        </form>
+        <div id="scoreBox"></div>
+        <div class="credits">Made by B.Neeraj</div>
     </div>
-    <p>Made By B.Neeraj Murali</p>
     <script>
-        const questions = [
-            { question: "What is the main goal of green chemistry?", options: ["Reduce pollution", "Increase waste", "Use more chemicals", "Ignore sustainability"], answer: 0 },
-            { question: "Which of these is a principle of green chemistry?", options: ["Use more toxic chemicals", "Prevent waste", "Increase energy consumption", "Use non-renewable resources"], answer: 1 },
-            { question: "What does green chemistry promote?", options: ["Safer products", "More hazardous waste", "Higher emissions", "More fossil fuel usage"], answer: 0 },
-            { question: "Which process aligns with green chemistry?", options: ["Using renewable materials", "Burning plastic", "Dumping waste", "Ignoring safety"], answer: 0 },
-            { question: "Why is green chemistry important?", options: ["To protect the environment", "To increase pollution", "To waste resources", "To make chemicals toxic"], answer: 0 }
-        ];
-        let currentQuestion = 0;
-        let score = 0;
-        let timeLeft = 60;function loadQuestion() {
-        if (currentQuestion < questions.length) {
-            document.getElementById("question").innerText = questions[currentQuestion].question;
-            const options = document.querySelectorAll(".option");
-            options.forEach((button, index) => {
-                button.innerText = questions[currentQuestion].options[index];
-            });
-        } else {
-            document.querySelector(".quiz-container").innerHTML = `<h2>Quiz Over!</h2><p>Your Score: ${score}</p>`;
+        // Timer code
+        var time = 0;
+        function formatTime(seconds) {
+            var mins = Math.floor(seconds / 60);
+            var secs = seconds % 60;
+            if (secs < 10) secs = "0" + secs;
+            return mins + ":" + secs;
         }
-    }
-
-    function checkAnswer(selected) {
-        if (selected === questions[currentQuestion].answer) {
-            score++;
-            document.getElementById("score").innerText = "Score: " + score;
-        }
-        currentQuestion++;
-        loadQuestion();
-    }
-
-    function startTimer() {
-        const timerInterval = setInterval(() => {
-            if (timeLeft > 0) {
-                timeLeft--;
-                document.getElementById("timer").innerText = "Time Left: " + timeLeft + "s";
-            } else {
+        document.addEventListener('DOMContentLoaded', function() {
+            var timerElement = document.getElementById('timer');
+            timerElement.innerHTML = "Time: " + formatTime(time);
+            var timerInterval = setInterval(function() {
+                time++;
+                timerElement.innerHTML = "Time: " + formatTime(time);
+            }, 1000);
+            // Quiz submission function
+            window.submitQuiz = function() {
                 clearInterval(timerInterval);
-                document.querySelector(".quiz-container").innerHTML = `<h2>Time's Up!</h2><p>Your Score: ${score}</p>`;
-            }
-        }, 1000);
-    }
-
-    loadQuestion();
-    startTimer();
-</script>
-
+                var score = 0;
+                var q1 = document.querySelector('input[name="q1"]:checked');
+                if (q1 && q1.value === "correct") { score++; }
+                var q2 = document.querySelector('input[name="q2"]:checked');
+                if (q2 && q2.value === "correct") { score++; }
+                var q3 = document.querySelector('input[name="q3"]:checked');
+                if (q3 && q3.value === "correct") { score++; }
+                var scoreBox = document.getElementById('scoreBox');
+                scoreBox.innerHTML = "Score: " + score + "/3";
+                scoreBox.style.display = 'block';
+            };
+        });
+    </script>
 </body>
 </html>
